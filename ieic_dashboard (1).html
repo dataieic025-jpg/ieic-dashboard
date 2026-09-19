@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IEIC Dashboard 2026</title>
+    <!-- Memanggil Tailwind CSS untuk styling yang cepat dan elegan -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Memanggil Font Google 'Inter' agar tulisan terlihat modern -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Memanggil FontAwesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .tab-content { display: none; } /* Menyembunyikan semua konten secara default */
+        .tab-content.active { display: block; } /* Menampilkan konten yang aktif */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 flex h-screen overflow-hidden text-slate-800">
+
+    <!-- SIDEBAR -->
+    <aside class="w-64 bg-blue-900 text-white flex flex-col shadow-2xl z-10">
+        <div class="p-6 text-center border-b border-blue-800 flex flex-col items-center">
+            <!-- Menambahkan Logo IEIC di sini -->
+            <img src="LOGO IEIC.png" alt="Logo IEIC" class="h-16 w-auto mb-2 opacity-90 object-contain">
+            <h1 class="text-xl font-bold tracking-wider text-blue-300">IEIC</h1>
+            <p class="text-[10px] mt-1 text-blue-200 uppercase tracking-wide">International Electromedical</p>
+            <p class="text-[10px] text-blue-200 uppercase tracking-wide">Innovation Competition</p>
+        </div>
+        
+        <nav class="flex-1 px-4 py-6 space-y-2">
+            <!-- Tombol Menu -->
+            <button onclick="openTab('about')" class="tab-btn w-full flex items-center gap-3 px-4 py-3 rounded-lg bg-blue-800 text-white transition-all">
+                <i class="fa-solid fa-circle-info w-5"></i> About
+            </button>
+            <button onclick="openTab('competition')" class="tab-btn w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-blue-800 text-blue-200 hover:text-white transition-all">
+                <i class="fa-solid fa-trophy w-5"></i> Competition
+            </button>
+            <button onclick="openTab('date')" class="tab-btn w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-blue-800 text-blue-200 hover:text-white transition-all">
+                <i class="fa-solid fa-calendar-check w-5"></i> Important Date
+            </button>
+            <button onclick="openTab('info')" class="tab-btn w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-blue-800 text-blue-200 hover:text-white transition-all">
+                <i class="fa-solid fa-file-arrow-down w-5"></i> Information
+            </button>
+        </nav>
+        <div class="p-4 text-center text-xs text-blue-400 border-t border-blue-800">
+            &copy; 2026 IEIC
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 overflow-y-auto relative">
+        <!-- Dekorasi Latar Belakang -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70 -z-10"></div>
+        <div class="absolute bottom-0 left-20 w-72 h-72 bg-teal-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70 -z-10"></div>
+
+        <div class="p-10 max-w-6xl mx-auto mt-4">
+            
+            <!-- KONTEN: ABOUT -->
+            <div id="about" class="tab-content active animation-fade">
+                <div class="relative w-full h-64 md:h-96 overflow-hidden rounded-2xl mb-10 shadow-lg group">
+                    <div id="slider" class="flex w-full h-full transition-transform duration-500 ease-in-out">
+                        <!-- Slide 1: Menggunakan Gambar yang kamu berikan -->
+                        <div class="min-w-full h-full relative">
+                            <img src="image_afe9f9.jpg" alt="IEIC Banner" class="w-full h-full object-cover">
+                        </div>
+                        <!-- Slide 2: Banner Teks Kustom -->
+                        <div class="min-w-full h-full bg-gradient-to-r from-blue-900 to-blue-700 text-white flex flex-col items-center justify-center p-8 text-center">
+                            <h2 class="text-3xl md:text-5xl font-bold mb-4">Welcome to IEIC 2026</h2>
+                            <p class="text-blue-200 text-lg md:text-xl">Innovating the Future of Healthcare</p>
+                        </div>
+                        <!-- Slide 3: Banner Teks Kustom -->
+                        <div class="min-w-full h-full bg-gradient-to-r from-teal-700 to-teal-500 text-white flex flex-col items-center justify-center p-8 text-center">
+                            <h2 class="text-3xl md:text-5xl font-bold mb-4">Join the Competition</h2>
+                            <p class="text-teal-100 text-lg md:text-xl">Showcase your biomedical engineering skills globally.</p>
+                        </div>
+                    </div>
+                    <!-- Tombol Kontrol Slider -->
+                    <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-blue-900 w-10 h-10 rounded-full shadow flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-blue-900 w-10 h-10 rounded-full shadow flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><i class="fa-solid fa-chevron-right"></i></button>
+                    
+                    <!-- Indikator Titik (Dots) -->
+                    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+                        <span class="dot w-3 h-3 bg-white rounded-full cursor-pointer opacity-100" onclick="goToSlide(0)"></span>
+                        <span class="dot w-3 h-3 bg-white rounded-full cursor-pointer opacity-50" onclick="goToSlide(1)"></span>
+                        <span class="dot w-3 h-3 bg-white rounded-full cursor-pointer opacity-50" onclick="goToSlide(2)"></span>
+                    </div>
+                </div>
+
+                <h2 class="text-3xl font-bold text-slate-800 border-b-4 border-blue-500 inline-block pb-2 mb-8">About IEIC</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Penjelasan Umum -->
+                    <div class="glass-card p-8 rounded-2xl shadow-lg border border-slate-100 md:col-span-2 relative overflow-hidden">
+                        
+                        <div class="relative z-10">
+                            <h3 class="text-xl font-bold text-blue-800 mb-3"><i class="fa-solid fa-globe mr-2"></i> What is IEIC?</h3>
+                            <p class="leading-relaxed text-slate-600 mb-6">
+                                The <strong>International Electromedical Innovation Competition (IEIC)</strong> is an international-scale event organized by Poltekkes Kemenkes Surabaya in collaboration with APTEMI, IKATEMI, and HIMATEMI.
+                                This competition serves as a platform for students and young innovators around the world to showcase their creative ideas and innovations in the field of biomedical engineering and healthcare technology.
+                            </p>
+                            
+                            <!-- Bagian Logo Kolaborator -->
+                            <div class="pt-4 border-t border-slate-200">
+                                <p class="text-sm text-slate-500 font-semibold mb-3 uppercase tracking-wider">In Collaboration With:</p>
+                                <div class="flex flex-wrap items-center gap-6">
+                                    <!-- Pastikan file gambar ini berada di folder yang sama dengan index.html -->
+                                    <img src="LOGO APTEMI.png" alt="Logo APTEMI" class="h-14 w-auto object-contain hover:scale-110 transition-transform bg-white rounded-lg p-1 shadow-sm">
+                                    <img src="LOGO IKATEMI.png" alt="Logo IKATEMI" class="h-14 w-auto object-contain hover:scale-110 transition-transform bg-white rounded-lg p-1 shadow-sm">
+                                    <img src="LOGO HIMATEMI.png" alt="Logo HIMATEMI" class="h-14 w-auto object-contain hover:scale-110 transition-transform bg-black rounded-lg p-1 shadow-sm">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Purpose -->
+                    <div class="glass-card p-8 rounded-2xl shadow-lg border border-slate-100 border-l-4 border-l-teal-500">
+                        <h3 class="text-xl font-bold text-teal-700 mb-3"><i class="fa-solid fa-bullseye mr-2"></i> Purpose</h3>
+                        <p class="leading-relaxed text-slate-600">
+                            IEIC aims to foster creativity, collaboration, and innovation among biomedical technology students. Through this event, participants are encouraged to develop practical solutions that contribute to the advancement of medical technology in Indonesia and beyond.
+                        </p>
+                    </div>
+
+                    <!-- Background -->
+                    <div class="glass-card p-8 rounded-2xl shadow-lg border border-slate-100 border-l-4 border-l-blue-500">
+                        <h3 class="text-xl font-bold text-blue-700 mb-3"><i class="fa-solid fa-lightbulb mr-2"></i> Background</h3>
+                        <p class="leading-relaxed text-slate-600">
+                            As healthcare technology continues to evolve rapidly, there is a growing need for innovative solutions in medical instrumentation and patient care. IEIC was established to bridge academic knowledge with real-world medical challenges, inspiring students to become pioneers of the future.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KONTEN: COMPETITION -->
+            <div id="competition" class="tab-content animation-fade">
+                <h2 class="text-3xl font-bold text-slate-800 border-b-4 border-blue-500 inline-block pb-2 mb-8">Competition</h2>
+                
+                <div class="glass-card p-8 rounded-2xl shadow-lg border border-slate-100 mb-8">
+                    <p class="text-lg font-semibold text-slate-700 mb-6">Choose one of the following competition categories for 2026:</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Kategori 1 -->
+                        <div class="bg-gradient-to-br from-blue-500 to-blue-700 p-6 rounded-xl text-white text-center shadow-md transform hover:scale-105 transition-transform cursor-pointer">
+                            <i class="fa-solid fa-laptop-medical text-4xl mb-4"></i>
+                            <h4 class="text-xl font-bold">IT Healthcare</h4>
+                        </div>
+                        <!-- Kategori 2 -->
+                        <div class="bg-gradient-to-br from-teal-500 to-teal-700 p-6 rounded-xl text-white text-center shadow-md transform hover:scale-105 transition-transform cursor-pointer">
+                            <i class="fa-solid fa-heart-pulse text-4xl mb-4"></i>
+                            <h4 class="text-xl font-bold">Biomedical Signal</h4>
+                        </div>
+                        <!-- Kategori 3 -->
+                        <div class="bg-gradient-to-br from-indigo-500 to-indigo-700 p-6 rounded-xl text-white text-center shadow-md transform hover:scale-105 transition-transform cursor-pointer">
+                            <i class="fa-solid fa-truck-medical text-4xl mb-4"></i>
+                            <h4 class="text-xl font-bold">Life Support</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Link Referensi 2025 -->
+                <div class="text-center p-6 bg-blue-50 rounded-xl border border-blue-200">
+                    <p class="text-slate-600 mb-2">Looking for the previous year's event?</p>
+                    <a href="https://ieic-himatemi.com/" target="_blank" class="inline-flex items-center gap-2 px-6 py-2 bg-white text-blue-600 font-semibold rounded-full shadow hover:shadow-md transition-all border border-blue-200 hover:bg-blue-600 hover:text-white">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Visit IEIC 2025 Website
+                    </a>
+                </div>
+            </div>
+
+            <!-- KONTEN: IMPORTANT DATE -->
+            <div id="date" class="tab-content animation-fade">
+                <h2 class="text-3xl font-bold text-slate-800 border-b-4 border-blue-500 inline-block pb-2 mb-8">Important Dates</h2>
+                
+                <div class="max-w-3xl mx-auto mt-4">
+                    <div class="relative border-l-4 border-blue-300 ml-4 md:ml-6 py-2 space-y-6">
+                        
+                        <!-- 1. Pendaftaran -->
+                        <div class="relative pl-8">
+                            <div class="absolute w-6 h-6 bg-blue-500 rounded-full -left-[15px] top-1 border-4 border-white shadow"></div>
+                            <div class="glass-card p-5 rounded-xl shadow-sm border border-slate-100 hover:border-blue-300 transition-colors">
+                                <div class="flex justify-between items-start flex-wrap gap-2 mb-2">
+                                    <h3 class="text-lg font-bold text-slate-800">1. Pendaftaran Peserta EIC</h3>
+                                    <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full"><i class="fa-solid fa-globe"></i> Online</span>
+                                </div>
+                                <p class="text-blue-600 font-semibold"><i class="fa-regular fa-calendar"></i> 21 Sep s/d 27 Okt 2026</p>
+                            </div>
+                        </div>
+
+                        <!-- 2. Technical Meeting 1 -->
+                        <div class="relative pl-8">
+                            <div class="absolute w-6 h-6 bg-blue-500 rounded-full -left-[15px] top-1 border-4 border-white shadow"></div>
+                            <div class="glass-card p-5 rounded-xl shadow-sm border border-slate-100 hover:border-blue-300 transition-colors">
+                                <div class="flex justify-between items-start flex-wrap gap-2 mb-2">
+                                    <h3 class="text-lg font-bold text-slate-800">2. Technical Meeting 1</h3>
+                                    <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full"><i class="fa-solid fa-globe"></i> Online</span>
+                                </div>
+                                <p class="text-blue-600 font-semibold"><i class="fa-regular fa-calendar"></i> 28 Okt 2026</p>
+                            </div>
+                        </div>
+
+                        <!-- 3. Pengumpulan Abstrak -->
+                        <div class="relative pl-8">
+                            <div class="absolute w-6 h-6 bg-blue-500 rounded-full -left-[15px] top-1 border-4 border-white shadow"></div>
+                            <div class="glass-card p-5 rounded-xl shadow-sm border border-slate-100 hover:border-blue-300 transition-colors">
+                                <div class="flex justify-between items-start flex-wrap gap-2 mb-2">
+                                    <h3 class="text-lg font-bold text-slate-800">3. Pengumpulan Abstrak & Video Inovasi Alat</h3>
+                                    <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full"><i class="fa-solid fa-globe"></i> Online</span>
+                                </div>
+                                <p class="text-blue-600 font-semibold"><i class="fa-regular fa-calendar"></i> 29 Sep s/d 4 Nov 2026</p>
+                            </div>
+                        </div>
+
+                        <!-- 4. Lomba IEIC -->
+                        <div class="relative pl-8">
+                            <div class="absolute w-6 h-6 bg-purple-500 rounded-full -left-[15px] top-1 border-4 border-white shadow"></div>
+                            <div class="glass-card p-5 rounded-xl shadow-sm border border-slate-100 hover:border-purple-300 transition-colors">
+                                <div class="flex justify-between items-start flex-wrap gap-2 mb-2">
+                                    <h3 class="text-lg font-bold text-slate-800">4. Lomba IEIC</h3>
+                                    <span class="px-3 py-1 bg-purple-100 text-purple-700 text-xs font-bold rounded-full"><i class="fa-solid fa-globe"></i> Online</span>
+                                </div>
+                                <p class="text-purple-600 font-semibold"><i class="fa-regular fa-calendar"></i> 5 s/d 7 Nov 2026</p>
+                            </div>
+                        </div>
+
+                        <!-- 5. Pengumuman 9 Besar -->
+                        <div class="relative pl-8">
+                            <div class="absolute w-6 h-6 bg-blue-500 rounded-full -left-[15px] top-1 border-4 border-white shadow"></div>
+                            <div class="glass-card p-5 rounded-xl shadow-sm border border-slate-100 hover:border-blue-300 transition-colors">
+                                <div class="flex justify-between items-start flex-wrap gap-2 mb-2">
+                                    <h3 class="text-lg font-bold text-slate-800">5. Pengumuman 9 Besar</h3>
+                                    <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full"><i class="fa-solid fa-globe"></i> Online</span>
+                                </div>
+                                <p class="text-blue-600 font-semibold"><i class="fa-regular fa-calendar"></i> 9 Nov 2026</p>
+                            </div>
+                        </div>
+
+                        <!-- 6. TM 2 -->
+                        <div class="relative pl-8">
+                            <div class="absolute w-6 h-6 bg-blue-500 rounded-full -left-[15px] top-1 border-4 border-white shadow"></div>
+                            <div class="glass-card p-5 rounded-xl shadow-sm border border-slate-100 hover:border-blue-300 transition-colors">
+                                <div class="flex justify-between items-start flex-wrap gap-2 mb-2">
+                                    <h3 class="text-lg font-bold text-slate-800">6. Technical Meeting 2 (Mekanisme Grand Final)</h3>
+                                    <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full"><i class="fa-solid fa-globe"></i> Online</span>
+                                </div>
+                                <p class="text-blue-600 font-semibold"><i class="fa-regular fa-calendar"></i> 10 Nov 2026</p>
+                            </div>
+                        </div>
+
+                        <!-- 7. Grand Final -->
+                        <div class="relative pl-8">
+                            <div class="absolute w-6 h-6 bg-red-500 rounded-full -left-[15px] top-1 border-4 border-white shadow"></div>
+                            <div class="glass-card p-5 rounded-xl shadow-sm border border-red-100 hover:border-red-300 transition-colors bg-red-50/50">
+                                <div class="flex justify-between items-start flex-wrap gap-2 mb-2">
+                                    <h3 class="text-lg font-bold text-slate-800">7. Grand Final</h3>
+                                    <span class="px-3 py-1 bg-red-100 text-red-700 text-xs font-bold rounded-full"><i class="fa-solid fa-globe"></i> Online</span>
+                                </div>
+                                <p class="text-red-600 font-semibold"><i class="fa-regular fa-calendar"></i> 12 Nov 2026</p>
+                            </div>
+                        </div>
+
+                        <!-- 8. Innovation Fair -->
+                        <div class="relative pl-8">
+                            <div class="absolute w-6 h-6 bg-amber-500 rounded-full -left-[15px] top-1 border-4 border-white shadow"></div>
+                            <div class="glass-card p-5 rounded-xl shadow-sm border border-amber-100 hover:border-amber-300 transition-colors bg-amber-50/50">
+                                <div class="flex justify-between items-start flex-wrap gap-2 mb-2">
+                                    <h3 class="text-lg font-bold text-slate-800">8. Innovation Fair</h3>
+                                    <span class="px-3 py-1 bg-amber-100 text-amber-700 text-xs font-bold rounded-full"><i class="fa-solid fa-building"></i> Offline</span>
+                                </div>
+                                <p class="text-amber-600 font-semibold mb-1"><i class="fa-regular fa-calendar"></i> 14 Nov 2026</p>
+                                <p class="text-sm text-slate-600 font-medium"><i class="fa-solid fa-location-dot"></i> Hotel MG. Setos Semarang</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- KONTEN: INFORMATION -->
+            <div id="info" class="tab-content animation-fade">
+                <h2 class="text-3xl font-bold text-slate-800 border-b-4 border-blue-500 inline-block pb-2 mb-8">Information & Downloads</h2>
+                
+                <p class="text-slate-600 mb-8 text-lg">Download the necessary documents and guidelines to prepare for the competition.</p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Download 1 -->
+                    <a href="#" class="flex flex-col items-center justify-center p-8 glass-card rounded-2xl shadow-lg border border-slate-200 hover:border-blue-500 hover:shadow-xl transition-all group text-center">
+                        <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-2xl mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-book"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 group-hover:text-blue-600">Download Guide</h4>
+                        <p class="text-sm text-slate-500 mt-2">General competition rulebook.</p>
+                    </a>
+
+                    <!-- Download 2 -->
+                    <a href="#" class="flex flex-col items-center justify-center p-8 glass-card rounded-2xl shadow-lg border border-slate-200 hover:border-blue-500 hover:shadow-xl transition-all group text-center">
+                        <div class="w-16 h-16 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center text-2xl mb-4 group-hover:bg-teal-600 group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-folder-open"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 group-hover:text-teal-600">Portfolio Template</h4>
+                        <p class="text-sm text-slate-500 mt-2">Format for your innovation portfolio.</p>
+                    </a>
+
+                    <!-- Download 3 -->
+                    <a href="#" class="flex flex-col items-center justify-center p-8 glass-card rounded-2xl shadow-lg border border-slate-200 hover:border-blue-500 hover:shadow-xl transition-all group text-center">
+                        <div class="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-2xl mb-4 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-language"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 group-hover:text-indigo-600">English Technical Guidelines</h4>
+                        <p class="text-sm text-slate-500 mt-2">Guidelines for online tool presentation.</p>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- JavaScript untuk mengatur Tab Menu -->
+    <script>
+        function openTab(tabName) {
+            // 1. Sembunyikan semua tab content
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // 2. Kembalikan warna semua tombol ke warna tidak aktif
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-blue-800', 'text-white');
+                btn.classList.add('text-blue-200');
+            });
+
+            // 3. Tampilkan tab yang dipilih
+            document.getElementById(tabName).classList.add('active');
+
+            // 4. Ubah warna tombol yang diklik menjadi aktif
+            event.currentTarget.classList.add('bg-blue-800', 'text-white');
+            event.currentTarget.classList.remove('text-blue-200');
+        }
+
+        let currentSlide = 0;
+        const totalSlides = 3;
+        
+        function updateSlider() {
+            const slider = document.getElementById('slider');
+            const dots = document.querySelectorAll('.dot');
+            
+            // Geser posisi slider menggunakan CSS Transform
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Update indikator titik (dot) di bawah slider
+            dots.forEach((dot, index) => {
+                if(index === currentSlide) {
+                    dot.classList.remove('opacity-50');
+                    dot.classList.add('opacity-100');
+                } else {
+                    dot.classList.remove('opacity-100');
+                    dot.classList.add('opacity-50');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+        }
+
+        // Membuat slider berjalan otomatis setiap 5 detik
+        setInterval(nextSlide, 5000);
+    </script>
+</body>
+</html>
